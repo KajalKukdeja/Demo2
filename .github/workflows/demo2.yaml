@@ -25,7 +25,7 @@ jobs:
           echo "C:\Ruby33-x64\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
           gem install bundler -NV
           gem install fastlane -NV
-          fastlane -v  # Check if Fastlane is installed correctly
+          C:\Ruby33-x64\bin\fastlane.bat -v  # Check if Fastlane is installed correctly
 
       - name: Debug - List Files
         run: ls -R
@@ -36,4 +36,4 @@ jobs:
           FIREBASE_API_TOKEN: ${{ secrets.FIREBASE_API_TOKEN }}
         run: |
           echo "$GOOGLE_PLAY_JSON_KEY" > fastlane/service_account.json
-          fastlane firebase  # Run Fastlane without full path
+          C:\Ruby33-x64\bin\fastlane.bat firebase  # Run Fastlane without full path
