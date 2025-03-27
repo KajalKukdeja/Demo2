@@ -18,7 +18,7 @@ default_platform(:android)
 platform :android do
   before_all do
     ENV["FIREBASE_LOGIN_CREDENTIALS"] = "fastlane/demo2-f4cf2-cf692b1077f2.json"
-    ENV["FIREBASE_APP_ID"] = "1:1080055773519:android:2715030b5dfa9f529ced3a"
+    ENV["FIREBASE_APP_ID"] = ENV["FIREBASE_APP_ID"]
   end
 
   ######## FIREBASE DISTRIBUTION  ########
