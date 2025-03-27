@@ -19,10 +19,13 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
 
-      - name: Install Ruby and Fastlane
+      - name: Install Ruby 3.3.7 and dependencies
         run: |
-          choco install ruby
-          gem install fastlane -NV
+          choco install ruby --version=3.3.7 -y --force
+          echo "C:\tools\ruby33\bin" >> $GITHUB_PATH
+          ruby -v
+          gem install bundler -NV
+          ridk install 3  # Installs MSYS2 for missing dependencies
 
       - name: Build and Upload to Firebase
         env:
