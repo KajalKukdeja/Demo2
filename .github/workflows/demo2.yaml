@@ -24,13 +24,17 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
 
+      - name: Install Dependencies
+        run: |
+          ridk install 3  # Installs MSYS2 and dev tools required for native extensions
+
       - name: Install Ruby and Fastlane
         run: |
-          choco install ruby -y --force
-          echo "C:\Ruby33-x64\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          choco install ruby --version=3.3.7 -y --force
+          echo "C:\Ruby31-x64\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
           gem install bundler -NV
           gem install fastlane -NV
-          fastlane -v  # Check if Fastlane is installed correctly
+          fastlane -v  # Verify Fastlane installation
 
       - name: Debug - List Files
         run: ls -R
