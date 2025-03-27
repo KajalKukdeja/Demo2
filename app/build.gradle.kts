@@ -62,7 +62,6 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(libs.firebase.crashlytics)
     // Import the Firebase BoM
     implementation(platform(libs.firebase.bom))
     // TODO: Add the dependencies for Firebase products you want to use

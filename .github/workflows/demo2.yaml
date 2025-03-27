@@ -10,6 +10,11 @@ jobs:
     runs-on: windows-latest
 
     steps:
+      - name: Set UTF-8 Locale
+        run: |
+          chcp 65001
+          [System.Text.Encoding]::UTF8 | Out-Null
+
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -25,7 +30,7 @@ jobs:
           echo "C:\Ruby33-x64\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
           gem install bundler -NV
           gem install fastlane -NV
-          C:\Ruby33-x64\bin\fastlane.bat -v  # Check if Fastlane is installed correctly
+          fastlane -v  # Check if Fastlane is installed correctly
 
       - name: Debug - List Files
         run: ls -R
@@ -33,7 +38,7 @@ jobs:
       - name: Build and Upload to Firebase
         env:
           FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
-          FIREBASE_API_TOKEN: ${{ secrets.FIREBASE_API_TOKEN }}
+          FIREBASE_API_TOKEN: ${{ secrets.FIREBASE_API_TOKEN }}.0..
         run: |
           echo "$GOOGLE_PLAY_JSON_KEY" > fastlane/service_account.json
-          C:\Ruby33-x64\bin\fastlane.bat firebase  # Run Fastlane without full path
+          fastlane testGoogle  # Run Fastlane without full path
