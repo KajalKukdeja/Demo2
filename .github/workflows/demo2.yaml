@@ -22,9 +22,10 @@ jobs:
       - name: Install Ruby and Fastlane
         run: |
           choco install ruby -y --force
-          echo "C:\tools\ruby33\bin" >> $GITHUB_PATH
+          echo "C:\Ruby33-x64\bin" >> $GITHUB_PATH
           gem install bundler -NV
           gem install fastlane -NV
+          echo "C:\Ruby33-x64\bin\fastlane" >> $GITHUB_PATH
           fastlane -v  # Check if Fastlane is installed
 
       - name: Debug - List Files
@@ -36,4 +37,4 @@ jobs:
           FIREBASE_API_TOKEN: ${{ secrets.FIREBASE_API_TOKEN }}
         run: |
           echo "$GOOGLE_PLAY_JSON_KEY" > fastlane/service_account.json
-          fastlane firebase
+          C:\Ruby33-x64\bin\fastlane firebase
