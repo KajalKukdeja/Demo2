@@ -26,7 +26,7 @@ jobs:
           gem install bundler -NV
           gem install fastlane -NV
           echo "C:\Ruby33-x64\bin\fastlane" >> $GITHUB_PATH
-          fastlane -v  # Check if Fastlane is installed
+          C:\Ruby33-x64\bin\fastlane -v  # Check if Fastlane is installed
 
       - name: Debug - List Files
         run: ls -R
