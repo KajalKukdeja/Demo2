@@ -52,6 +52,9 @@ jobs:
         run: |
             [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}")) | Out-File -FilePath "fastlane/service_account.json" -Encoding utf8
 
+      - name: Install Fastlane Firebase Plugin
+        run: fastlane add_plugin firebase_app_distribution
+
       - name: Build and Upload to Firebase
         env:
           FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
