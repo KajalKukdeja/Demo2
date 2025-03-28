@@ -55,6 +55,9 @@ jobs:
       - name: Install Fastlane Firebase Plugin
         run: fastlane add_plugin firebase_app_distribution
 
+      - name: Install JSON Firebase Plugin
+        run: fastlane add_plugin load_json
+
       - name: Build and Upload to Firebase
         env:
           FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
